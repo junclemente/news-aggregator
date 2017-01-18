@@ -258,20 +258,18 @@ APP.Main = (function() {
 
     // It does seem awfully broad to change all the
     // colors every time!
-    // for (var s = 0; s < storyElements.length; s++) {
-    // var story = storyElements[s];
-    // Removed for loop and used first story to calculate scale for all
-    var story = storyElements[0]
-    var score = story.querySelector('.story__score');
-    var title = story.querySelector('.story__title');
+    for (var s = 0; s < storyElements.length; s++) {
+      var story = storyElements[s];
+      var score = story.querySelector('.story__score');
+      var title = story.querySelector('.story__title');
 
-    // Base the scale on the y position of the score.
-    var height = main.offsetHeight;
-    var mainPosition = main.getBoundingClientRect();
-    var scoreLocation = score.getBoundingClientRect().top -
-        document.body.getBoundingClientRect().top;
-    var scale = Math.min(1, 1 - (0.05 * ((scoreLocation - 170) / height)));
-    var opacity = Math.min(1, 1 - (0.5 * ((scoreLocation - 170) / height)));
+      // Base the scale on the y position of the score.
+      var height = main.offsetHeight;
+      var mainPosition = main.getBoundingClientRect();
+      var scoreLocation = score.getBoundingClientRect().top -
+          document.body.getBoundingClientRect().top;
+      var scale = Math.min(1, 1 - (0.05 * ((scoreLocation - 170) / height)));
+      var opacity = Math.min(1, 1 - (0.5 * ((scoreLocation - 170) / height)));
 
 
       score.style.width = (scale * 40) + 'px';
@@ -284,7 +282,7 @@ APP.Main = (function() {
 
       score.style.backgroundColor = 'hsl(42, ' + saturation + '%, 50%)';
       title.style.opacity = opacity;
-    // }
+    }
   }
 
   main.addEventListener('touchstart', function(evt) {
